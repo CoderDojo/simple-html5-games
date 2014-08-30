@@ -1,0 +1,161 @@
+<html>
+	<head>
+		<title>CoderDojo Balloon Game</title>
+		<style>
+			body {
+				background: #F4F6B7;
+				padding-left: 10%;
+				padding-right: 10%;
+				margin-bottom: 0px;
+				margin-top: 0px;
+				height:100%;
+				font-family: Comic Sans MS;
+				color: #fff;
+			}
+
+			#gameDiv {
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 0px;
+				width: 100%;
+				height: 100%;
+				background: #7BADEC;
+				border-image:url(cd-border.png) 0 100% repeat;
+				border-width: 20px;
+				border-top: 0px;
+				border-bottom: 0px;
+			}
+
+			#logo {
+				margin: 30px;
+				position: absolute; 
+				bottom: 0px;
+			}
+
+			img#balloonimg {
+				width: 100%;
+			}
+
+			#balloon {
+				margin-left: auto;
+				margin-right: auto;
+				width: 3%;
+			}
+
+			#boom {
+				font-size: 150px;
+				color: #E60A15;
+				text-align: center;
+			}
+
+			.score {
+				margin: 30px;
+				float: right;
+				border: 5px solid #6c5529;
+				height: 120px;
+				width: 250px;
+				box-shadow: 8px 8px 5px #6c5529;
+				background: #17412F;
+				text-align: center;
+			}
+
+			.scoreTitle {
+				font-size: 30px;
+			}
+
+			#score {
+				font-size: 60px;
+			}
+
+			#heading {
+				margin: 30px;
+				color: #E60A15;
+				font-size: 60px;
+				float: left;
+				text-align: center;
+			}
+
+			.topPanel {
+				width: 100%;
+				float: left;
+			}
+
+			.tieit {
+				border: 5px solid #000;
+				padding-top: 5px;
+				height: 60px;
+				width: 200px;
+				box-shadow: 8px 8px 5px #000;
+				background: #E60A15;
+				text-align: center;
+				position: absolute;
+				font-size: 30px;
+				bottom: 20px;
+				right: 12%;
+			}
+		</style>
+	</head>
+	<body onload="setup()">
+		<div id="gameDiv">
+			<div class="topPanel">
+				<div id="heading">Balloon Game</div>
+				<div class="score">
+					<div class="scoreTitle">SCORE</div>
+					<div id="score">0</div>
+				</div>	
+			</div>
+			<div id="balloon" onclick="blow()">
+				<img src="balloon.png" id="balloonimg"/>
+			</div>
+			<div id="boom">
+				BOOM
+			</div>
+			<div id="logo">
+				<img src="coderdojologo.png"/>
+			</div>
+			<div class="tieit" onclick="tieit()">tie balloon</div>
+		</div>
+	</body>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script>
+		var blowcount;
+		var maxblow;
+		var score = 10;
+
+		function blow() {
+			if(maxblow > blowcount) {
+				blowcount = blowcount +1;
+				var newWidth = blowcount * 2;
+				score = score * 2;
+				$("#balloon").width(newWidth+"%");
+				$("#score").html(score);
+			} else {
+				blowup();
+			}
+		}
+
+		function blowup() {
+			$("#score").html(0);
+			$("#balloon").hide();
+			$("#boom").show();
+			score = 10;
+			setTimeout(setup, 2000);
+		}
+
+		function setup() {
+			blowcount=1;
+			maxblow = Math.floor((Math.random() * 10) + 1);
+			$("#balloon").show();
+			$("#boom").hide();
+			$("#balloon").width("3%");
+		}
+
+		function tieit() {
+			if(maxblow == blowcount) {
+				setup();
+			} else {
+				blowup();
+			}	
+		}
+	</script>
+</html>
