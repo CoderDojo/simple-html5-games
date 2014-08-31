@@ -39,7 +39,9 @@
 			#balloon {
 				margin-left: auto;
 				margin-right: auto;
-				width: 3%;
+				width: 5%;
+				cursor: pointer;
+
 			}
 
 			#boom {
@@ -92,13 +94,14 @@
 				font-size: 30px;
 				bottom: 20px;
 				right: 12%;
+				cursor: pointer;
 			}
 		</style>
 	</head>
 	<body onload="setup()">
 		<div id="gameDiv">
 			<div class="topPanel">
-				<div id="heading">Balloon Game</div>
+				<div id="heading">Random Balloon Game</div>
 				<div class="score">
 					<div class="scoreTitle">SCORE</div>
 					<div id="score">0</div>
@@ -125,7 +128,7 @@
 		function blow() {
 			if(maxblow > blowcount) {
 				blowcount = blowcount +1;
-				var newWidth = blowcount * 2;
+				var newWidth = blowcount * 5;
 				score = score * 2;
 				$("#balloon").width(newWidth+"%");
 				$("#score").html(score);
@@ -144,10 +147,10 @@
 
 		function setup() {
 			blowcount=1;
-			maxblow = Math.floor((Math.random() * 10) + 1);
+			maxblow = Math.floor((Math.random() * 4) + 1);
 			$("#balloon").show();
 			$("#boom").hide();
-			$("#balloon").width("3%");
+			$("#balloon").width("5%");
 		}
 
 		function tieit() {
