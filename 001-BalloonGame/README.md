@@ -32,11 +32,11 @@ The body tag is the most important on  your webpage,
 
 ````html
 <html>
-	//1 start by creating a blank web page with a title
+	<div class="learningInfo"> 1 start by creating a blank web page with a title</div>
 	<head>
 		<title>CoderDojo Random Balloon Game</title>
 	</head>
-	//2 Add the web page body take with all the content you want to appear on the screen
+	<div class="learningInfo"> 2 Add the web page body take with all the content you want to appear on the screen</div>
 	<body onload="setup()">
 		<div id="gameDiv">
 			<div class="topPanel">
@@ -82,11 +82,11 @@ The style tag allows you add __CSS__ to your webpage.  To add CSS to a tag, this
 
 ````html
 <html>
-	//1 start by creating a blank web page with a title
+	<div class="learningInfo"> 1 start by creating a blank web page with a title</div>
 	<head>
 		<title>CoderDojo Random Balloon Game</title>
 	</head>
-	//2 Add the web page body take with all the content you want to appear on the screen
+	<div class="learningInfo"> 2 Add the web page body take with all the content you want to appear on the screen</div>
 	<body onload="setup()">
 		<div id="gameDiv">
 			<div class="topPanel">
@@ -108,7 +108,7 @@ The style tag allows you add __CSS__ to your webpage.  To add CSS to a tag, this
 			<div class="tieit" onclick="tieit()">tie balloon</div>
 		</div>
 	</body>
-	//3 Add style to your game
+	<div class="learningInfo"> 3 Add style to your game</div>
 	<style>
 			body {
 				background: #F4F6B7;
@@ -204,6 +204,10 @@ The style tag allows you add __CSS__ to your webpage.  To add CSS to a tag, this
 				right: 12%;
 				cursor: pointer;
 			}
+
+			.learningInfo {
+				display: none;
+			}
 	</style>
 </html>
 
@@ -221,11 +225,11 @@ In this game we have 3 main concepts
 
 ````html
 <html>
-	//1 start by creating a blank web page with a title
+	<div class="learningInfo"> 1 start by creating a blank web page with a title</div>
 	<head>
 		<title>CoderDojo Random Balloon Game</title>
 	</head>
-	//2 Add the web page body take with all the content you want to appear on the screen
+	<div class="learningInfo">  2 Add the web page body take with all the content you want to appear on the screen </div>
 	<body onload="setup()">
 		<div id="gameDiv">
 			<div class="topPanel">
@@ -247,7 +251,7 @@ In this game we have 3 main concepts
 			<div class="tieit" onclick="tieit()">tie balloon</div>
 		</div>
 	</body>
-	//3 Add style to your game
+	<div class="learningInfo"> 3 Add style to your game </div>
 	<style>
 			body {
 				background: #F4F6B7;
@@ -344,7 +348,7 @@ In this game we have 3 main concepts
 				cursor: pointer;
 			}
 	</style>
-	//4 Add the game code
+	<div class="learningInfo"> 4 Add the game code </div>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		var blowcount;
