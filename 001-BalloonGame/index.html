@@ -1,7 +1,32 @@
 <html>
+	//1 start by creating a blank web page with a title
 	<head>
-		<title>CoderDojo Balloon Game</title>
-		<style>
+		<title>CoderDojo Random Balloon Game</title>
+	</head>
+	//2 Add the web page body take with all the content you want to appear on the screen
+	<body onload="setup()">
+		<div id="gameDiv">
+			<div class="topPanel">
+				<div id="heading">Random Balloon Game</div>
+				<div class="score">
+					<div class="scoreTitle">SCORE</div>
+					<div id="score">0</div>
+				</div>	
+			</div>
+			<div id="balloon" onclick="blow()">
+				<img src="balloon.png" id="balloonimg"/>
+			</div>
+			<div id="boom">
+				BOOM
+			</div>
+			<div id="logo">
+				<img src="coderdojologo.png"/>
+			</div>
+			<div class="tieit" onclick="tieit()">tie balloon</div>
+		</div>
+	</body>
+	//3 Add style to your game
+	<style>
 			body {
 				background: #F4F6B7;
 				padding-left: 10%;
@@ -96,29 +121,8 @@
 				right: 12%;
 				cursor: pointer;
 			}
-		</style>
-	</head>
-	<body onload="setup()">
-		<div id="gameDiv">
-			<div class="topPanel">
-				<div id="heading">Random Balloon Game</div>
-				<div class="score">
-					<div class="scoreTitle">SCORE</div>
-					<div id="score">0</div>
-				</div>	
-			</div>
-			<div id="balloon" onclick="blow()">
-				<img src="balloon.png" id="balloonimg"/>
-			</div>
-			<div id="boom">
-				BOOM
-			</div>
-			<div id="logo">
-				<img src="coderdojologo.png"/>
-			</div>
-			<div class="tieit" onclick="tieit()">tie balloon</div>
-		</div>
-	</body>
+	</style>
+	//4 Add the game code
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
 		var blowcount;
