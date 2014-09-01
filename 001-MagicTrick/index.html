@@ -1,14 +1,18 @@
 <html>
-	<div class="learningInfo"> //1 start by creating a blank web page with a title </div>
+	<div class="learningInfo"> 1 start by creating a blank web page with a title </div>
 	<head>
-		<title>CoderDojo - Magic Game</title>
+		<title>CoderDojo - Magic Trick</title>
 	</head>
 	<div class="learningInfo"> 2 Add the web page body take with all the content you want to appear on the screen </div>
 	<body>
-		<div id="heading">CoderDojo Magic Game</div>
+		<div id="heading">CoderDojo Magic Trick</div>
 		<div id="gameDiv">
 			<div id="coderdojo" onclick="magic()">
+				<div>click - me</div>
 				<img src="coder.png"/>
+			</div>
+			<div id="goAgain" onclick="go()">
+				<div>Go Again</div>
 			</div>
 		</div>
 	</body>
@@ -30,6 +34,7 @@
 				color: #E60A15;
 				font-size: 60px;
 				text-align: center;
+				font-weight: bolder;
 			}
 
 			#coderdojo {
@@ -41,8 +46,17 @@
 				margin-top: 50px;
 			}
 
+			#goAgain {
+				margin: 100px;
+				color: #fff;
+				font-size: 60px;
+				text-align: center;
+				cursor: pointer;
+				font-weight: bolder;
+			}
+
 			img {
-				width: 50px;
+				width: 200px;
 			}
 
 			.learningInfo {
@@ -54,6 +68,12 @@
 	<script>
 		function magic() {
 			$("#coderdojo").hide();
+			$("#goAgain").show();
+		}
+
+		function go() {
+			$("#goAgain").hide();
+			$("#coderdojo").show();
 		}
 	</script>
 </html>

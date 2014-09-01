@@ -1,31 +1,26 @@
 <html>
 	<div class="learningInfo"> 1 start by creating a blank web page with a title </div>
 	<head>
-		<title>CoderDojo - Random Balloon Game</title>
+		<title>CoderDojo - Ping Game</title>
 	</head>
 	<div class="learningInfo"> 2 Add the web page body take with all the content you want to appear on the screen </div>
-	<body onload="setup()">
+	<body onload="setup(100)">
 		<div id="gameDiv">
 			<div class="topPanel">
-				<div id="heading">Random Balloon Game</div>
+				<div id="heading">Ping Game</div>
 				<div class="score">
 					<div class="scoreTitle">SCORE</div>
 					<div id="score">0</div>
 				</div>	
 			</div>
-			<div id="balloon" onclick="blow()">
-				<img src="balloon.png" id="balloonimg"/>
-			</div>
-			<div id="boom">
-				BOOM
+			<div id="ping">
 			</div>
 			<div id="logo">
 				<img src="coderdojologo.png"/>
 			</div>
-			<div class="tieit" onclick="tieit()">tie balloon</div>
 		</div>
 	</body>
-	<div class="learningInfo">  3 Add style to your game  </div>
+	<div class="learningInfo"> 3 Add style to your game  </div>
 	<style>
 			body {
 				background: #F4F6B7;
@@ -57,22 +52,8 @@
 				bottom: 0px;
 			}
 
-			img#balloonimg {
+			#imageRow {
 				width: 100%;
-			}
-
-			#balloon {
-				margin-left: auto;
-				margin-right: auto;
-				width: 5%;
-				cursor: pointer;
-
-			}
-
-			#boom {
-				font-size: 150px;
-				color: #E60A15;
-				text-align: center;
 			}
 
 			.score {
@@ -107,66 +88,62 @@
 				float: left;
 			}
 
-			.tieit {
-				border: 5px solid #000;
-				padding-top: 5px;
-				height: 60px;
-				width: 200px;
-				box-shadow: 8px 8px 5px #000;
-				background: #E60A15;
-				text-align: center;
-				position: absolute;
-				font-size: 30px;
-				bottom: 20px;
-				right: 12%;
-				cursor: pointer;
-			}
-
 			.learningInfo {
 				display: none;
+			}
+
+			.pingimage {
+				width: 10%;
 			}
 	</style>
 	<div class="learningInfo"> 4 Add the game code </div>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script>
-		var blowcount;
-		var maxblow;
-		var score = 10;
+		var score;
 
-		function blow() {
-			if(maxblow > blowcount) {
-				blowcount = blowcount +1;
-				var newWidth = blowcount * 5;
-				score = score * 2;
-				$("#balloon").width(newWidth+"%");
-				$("#score").html(score);
-			} else {
-				blowup();
-			}
-		}
-
-		function blowup() {
-			$("#score").html(0);
-			$("#balloon").hide();
-			$("#boom").show();
-			score = 10;
-			setTimeout(setup, 2000);
-		}
-
-		function setup() {
-			blowcount=1;
-			maxblow = Math.floor((Math.random() * 5) + 2);
-			$("#balloon").show();
-			$("#boom").hide();
-			$("#balloon").width("5%");
-		}
-
-		function tieit() {
-			if(maxblow == blowcount) {
-				setup();
-			} else {
-				blowup();
+		function drawRows() {
+			for(var row = 0; row < 3; row++) {
+				draw10Images(row);
 			}	
 		}
+
+		function draw10Images(row) {
+			var rowHtml = "<div class='imageRow'>";
+			for(var imageNo = 0; imageNo < 10; imageNo++ ) {
+				var imageId = ""+row+imageNo;
+				rowHtml = rowHtml + "<img id='"+imageId+"' src='coder.png' class='pingimage'/>";
+			}
+			rowHtml += "</div>";
+			$("#ping").append(rowHtml);
+		}
+
+		function displayReverseImage() {
+			var row = Math.floor(Math.random() * 2);
+			var imageNo = Math.floor(Math.random() * 10);
+			var imageId =  "#"+row+imageNo;
+			$(imageId).attr("src", "coder-reverse.png");
+			$(imageId).click(function() {
+				setup(score+100);
+			});
+		}
+
+		function setScore(newScore) {
+			score = newScore;
+			$("#score").html(score);
+		}
+		
+		function setup(newScore) {
+			$("#ping").empty();
+			setScore(newScore);
+			drawRows();
+			reduceScore();
+			displayReverseImage();
+		}
+
+		function reduceScore() {
+			setScore(score-5);
+			setTimeout(reduceScore, 500);
+		}
+		
 	</script>
 </html>
