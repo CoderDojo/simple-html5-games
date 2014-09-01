@@ -1,0 +1,59 @@
+<html>
+	<div class="learningInfo"> //1 start by creating a blank web page with a title </div>
+	<head>
+		<title>CoderDojo - Magic Game</title>
+	</head>
+	<div class="learningInfo"> 2 Add the web page body take with all the content you want to appear on the screen </div>
+	<body>
+		<div id="heading">CoderDojo Magic Game</div>
+		<div id="gameDiv">
+			<div id="coderdojo" onclick="magic()">
+				<img src="coder.png"/>
+			</div>
+		</div>
+	</body>
+	<div class="learningInfo">  3 Add style (cool) to your game  </div>
+	<style>
+			body {
+				background: #7BADEC;
+				padding-left: 10%;
+				padding-right: 10%;
+				margin-bottom: 0px;
+				margin-top: 0px;
+				height:100%;
+				font-family: Comic Sans MS;
+				color: #fff;
+			}
+
+			#heading {
+				margin: 30px;
+				color: #E60A15;
+				font-size: 60px;
+				text-align: center;
+			}
+
+			#coderdojo {
+				height: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				width: 100px;
+				cursor: pointer;
+				margin-top: 50px;
+			}
+
+			img {
+				width: 50px;
+			}
+
+			.learningInfo {
+				display: none;
+			}
+	</style>
+	<div class="learningInfo"> 4 Add the magic code </div>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script>
+		function magic() {
+			$("#coderdojo").hide();
+		}
+	</script>
+</html>
